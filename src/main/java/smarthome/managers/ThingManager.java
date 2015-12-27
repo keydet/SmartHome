@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Ivan.Balabanov on 27.12.2015.
  */
-public class ThingManager {
+public class ThingManager implements ThingController {
 
     private static final ThingManager instance = new ThingManager();
 
@@ -38,8 +38,6 @@ public class ThingManager {
     }
 
     public Thing getThingInstance(int id, String name, int power) {
-
-
         // Unique safe check of ArrayList Things missing
         return new Thing(id, name, power);
     }

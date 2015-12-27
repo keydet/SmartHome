@@ -2,7 +2,7 @@ package smarthome.common;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import smarthome.managers.ThingManager;
+import smarthome.managers.ThingController;
 import smarthome.model.DAO;
 
 public class App {
@@ -18,13 +18,8 @@ public class App {
         // Spring part
         ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");
         DAO dao = (DAO) context.getBean("dao");
-        ThingManager thingManager = ThingManager.getInstance();
-        //dao.insert(thingManager.getThingInstance(5, "Springer",0));
-
+        ThingController thingManager = (ThingController) context.getBean("thingManager");
         thingManager.setThings(dao.selectThings());
-
-        System.out.println(thingManager.getThings());
-
         for (int i = 0; i < thingManager.getSize(); i++) {
             System.out.println(thingManager.getThingByIndex(i).getName());
         }

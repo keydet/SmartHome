@@ -7,4 +7,8 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <bean id="thingManager" class="smarthome.managers.ThingManager">
+
+    </bean>
+
 </beans>
