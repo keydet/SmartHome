@@ -1,7 +1,5 @@
 package smarthome.model;
 
-import smarthome.managers.ThingManager;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +16,9 @@ public class JdbcThingDAO implements DAO {
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+    public DataSource getDataSource() {
+        return this.dataSource;
     }
 
     public void insertThing(Thing thing){
@@ -51,7 +52,7 @@ public class JdbcThingDAO implements DAO {
 
         String sql = "SELECT * FROM things WHERE id=" + thingId;
         Connection conn = null;
-        Thing thing = ThingManager.getThingInstance(thingId,"",0);
+        Thing thing = new Thing(thingId,"",0);
         try {
             conn = dataSource.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

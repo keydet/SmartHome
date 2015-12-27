@@ -24,7 +24,7 @@ public class ThingManager {
         return this.Things;
     }
 
-    public static Thing getThingByIndex(int index) {
+    public Thing getThingByIndex(int index) {
         return Things.get(index);
     }
 
@@ -37,7 +37,7 @@ public class ThingManager {
         return this.Things.size();
     }
 
-    public static Thing getThingInstance(int id, String name, int power) {
+    public Thing getThingInstance(int id, String name, int power) {
 
 
         // Unique safe check of ArrayList Things missing

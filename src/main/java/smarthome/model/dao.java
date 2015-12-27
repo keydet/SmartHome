@@ -1,5 +1,6 @@
 package smarthome.model;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 
 /**
@@ -10,4 +11,6 @@ public interface DAO
     public void insertThing(Thing thing);
     public Thing findByThingId(int thingId);
     public ArrayList<Thing> selectThings();
+    public void setDataSource(DataSource dataSource);
+    public DataSource getDataSource();
 }
