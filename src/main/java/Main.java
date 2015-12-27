@@ -1,6 +1,3 @@
-import java.sql.Connection;
-import java.util.ArrayList;
-
 /**
  * Created by Ivan.Balabanov on 27.12.2015.
  */
@@ -10,9 +7,7 @@ public class Main {
 
         ThingManager thingManager = ThingManager.getInstance();
         System.out.println("Created ThingManager:" + thingManager.hashCode());
-        DatabaseManager dbManager = DatabaseManager.getInstance();
-        ArrayList<Thing> things = dbManager.getThings();
-        System.out.println("Created things array:" + things);
+        System.out.println("Created things array:" + thingManager.getThings());
     }
 
 }
