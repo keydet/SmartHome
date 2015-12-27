@@ -1,5 +1,7 @@
 package smarthome.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ivan.Balabanov on 27.12.2015.
  */
@@ -8,6 +10,7 @@ public class Thing {
     int id;
     int power;
     String name;
+    ArrayList<Zone> zones = new ArrayList<Zone>();
 
     public Thing(int id, String name, int power) {
         this.id = id;
@@ -24,16 +27,23 @@ public class Thing {
 
     public String getName() {return this.name;}
 
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this.name;
+        return;
     }
 
     public int getPower() {return this.power;}
 
-    public int setPower(int power) {
+    public void setPower(int power) {
         this.power = power;
-        return this.power;
+        return;
+    }
+
+    public ArrayList<Zone> getZones() {return this.zones;}
+
+    public void setZones(ArrayList<Zone> zones) {
+        this.zones = zones;
+        return;
     }
 
 }

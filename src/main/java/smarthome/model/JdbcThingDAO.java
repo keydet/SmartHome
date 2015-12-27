@@ -106,4 +106,65 @@ public class JdbcThingDAO implements DAO {
 
     }
 
+    public ArrayList<Thing> findByZone(Zone zone) {
+
+        String sql = "SELECT things.id,things.name,things.power,zones.zoneId,zones.thingId " +
+                "FROM things,zones WHERE things.id=zones.zoneId AND zones.zoneId=" + zone.getId() +
+                " GROUP BY things.id,things.name,things.power";
+
+        Connection conn = null;
+        ArrayList<Thing> things = new ArrayList<Thing>();
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Thing thing = new Thing(rs.getInt("id"),rs.getString("name"),rs.getInt("power"));
+                things.add(thing);
+            }
+            rs.close();
+            ps.close();
+            return things;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {}
+            }
+        }
+
+    }
+
+    public ArrayList<Zone> selectZones() {
+
+        String sql = "SELECT * FROM zones";
+
+        Connection conn = null;
+        ArrayList<Zone> zones = new ArrayList<Zone>();
+
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Zone zone = new Zone(rs.getInt(1),rs.getInt(2),rs.getString(3));
+                zones.add(zone);
+            }
+            rs.close();
+            ps.close();
+            return zones;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {}
+            }
+        }
+
+    }
 }
