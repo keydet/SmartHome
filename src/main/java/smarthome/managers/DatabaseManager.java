@@ -1,3 +1,7 @@
+package smarthome.managers;
+
+import smarthome.model.Thing;
+
 import java.sql.*;
 import java.util.ArrayList;
 
